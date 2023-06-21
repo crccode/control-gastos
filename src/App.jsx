@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [presupuesto,setPresupuesto] = useState(0);
+  // DEFINIMOS SI ES VALIDO O NO EL PRESUPUESTO
+  const [isValidatePresupuesto, setIsValidatePresupuesto] = useState (false);
   return (
     <div>
-     <h2>HOLA</h2>
+      <Header 
+        presupuesto = {presupuesto}
+        setPresupuesto = {setPresupuesto}
+
+        isValidatePresupuesto = {isValidatePresupuesto}
+        setIsValidatePresupuesto = {setIsValidatePresupuesto}
+
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
