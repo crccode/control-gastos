@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./App.css";
+
 import Header from "./components/Header";
-import IconoNuevoGasto from "./img/nuevo-gasto.svg";
 import Modal from "./components/Modal";
+import {generarId} from "./helpers/";
+
+import IconoNuevoGasto from "./img/nuevo-gasto.svg";
+
 function App() {
   const [presupuesto,setPresupuesto] = useState(0);
   // DEFINIMOS SI ES VALIDO O NO EL PRESUPUESTO
@@ -17,6 +21,18 @@ function App() {
       setAnimarModal(true);
     }, 300);
 
+  }
+  // BOTON FORMULARIO GASTO
+  const [gastos, setGastos] = useState([]);
+   // FUNCION GUARDAR
+  const guardarGasto = gasto => {
+    gasto.id = generarId();
+    setGastos(...gastos, gasto)
+    // ANIMACION DE CERRAR VENTANA 
+    setAnimarModal(false);
+    setTimeout(() => {
+        setModal(false);
+      }, 300);
   }
   return (
     <div>
@@ -43,6 +59,8 @@ function App() {
           setModal = {setModal}
           animarModal = {animarModal}
           setAnimarModal = {setAnimarModal}
+
+          guardarGasto = {guardarGasto}
         />
       }
      

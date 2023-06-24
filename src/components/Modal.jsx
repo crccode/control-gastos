@@ -4,7 +4,7 @@ import Mensaje from "./Mensaje";
 
 import CerrarBtn from "../img/cerrar.svg";
 
-const Modal = ({ setModal, animarModal, setAnimarModal }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
   // BOTON OCULTAR MODAL
   const ocultarModal = () => {
     setModal(false);
@@ -13,6 +13,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
       setModal(false);
     }, 300);
   };
+
+ 
 
   // MESANJE DE VALIDACION
   const [mensaje, setMensaje] = useState('');
@@ -35,7 +37,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
         return
     }
 
-    // guardarGasto({nombre, cantidad, categoria, id, fecha})
+    guardarGasto({nombre, cantidad, categoria, id, fecha})
   }
   return (
     <div className="modal">
@@ -93,7 +95,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
 
         <input
           type="submit"
-        //   value={gastoEditar.nombre ? "Guardar Cambios" : "Añadir Gasto"}
+        //   value={gastoEditar.nombre ? "Guardar Cambios" : "Añadir Gasto"}    
         />
       </form>
     </div>
