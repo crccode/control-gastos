@@ -38,7 +38,8 @@ function App() {
     // CADA VEZ QUE SE A;ADE UN GASTO SE SOBREPONE ESTE ESTILO TOMO TODO EL ALTO DE LA PANTALLA 
     <div className={modal ? 'fijar' : '' }>
       <Header 
-        
+        gastos = {gastos}
+
         presupuesto = {presupuesto}
         setPresupuesto = {setPresupuesto}
 

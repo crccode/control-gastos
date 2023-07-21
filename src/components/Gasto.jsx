@@ -32,7 +32,7 @@ const Gasto = ({ key, gasto }) => {
           src={diccionarioIconos[categoria]}
           alt="Icono Gasto"
         />
-        
+        {/* INFORMACION EXTRA  */}
         <div className="descripcion-gasto">
           <p className="categoria">{categoria}</p>
           <p className="nombre-gasto">{nombre}</p>
