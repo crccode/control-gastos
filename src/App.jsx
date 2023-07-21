@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 
 import Header from "./components/Header";
 import Modal from "./components/Modal";
+import ListadoGastos from "./components/ListadoGastos";
 import {generarId} from "./helpers/";
 
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
@@ -27,7 +27,7 @@ function App() {
    // FUNCION GUARDAR
   const guardarGasto = gasto => {
     gasto.id = generarId();
-    setGastos(...gastos, gasto)
+    setGastos([...gastos, gasto])
     // ANIMACION DE CERRAR VENTANA 
     setAnimarModal(false);
     setTimeout(() => {
@@ -35,8 +35,10 @@ function App() {
       }, 300);
   }
   return (
-    <div>
+    // CADA VEZ QUE SE A;ADE UN GASTO SE SOBREPONE ESTE ESTILO TOMO TODO EL ALTO DE LA PANTALLA 
+    <div className={modal ? 'fijar' : '' }>
       <Header 
+        
         presupuesto = {presupuesto}
         setPresupuesto = {setPresupuesto}
 
@@ -46,14 +48,24 @@ function App() {
       />
       {/* SI EL PRESUPUESTO ES VALIDO MUESTRAEL BOTON */}
       {isValidatePresupuesto&& (
-        <div className="nuevo-gasto">
-          <img 
-            src={IconoNuevoGasto}
-            alt ="icnono nuevo gasto"
-            onClick={handleNuevoGasto}
-          />
-      </div>
+        <>
+          <main>
+            <ListadoGastos
+              gastos ={gastos}
+            />
+          </main>
+          {/* BOTON NUEVO GASTO  */}
+          <div className="nuevo-gasto">
+            <img 
+              src={IconoNuevoGasto}
+              alt ="icnono nuevo gasto"
+              onClick={handleNuevoGasto}
+            />
+          </div>
+        </>
+      
       )}
+        {/* SI PRESIONAMOS EL BOTON ENTONCES MOSTRAMOS EL COMPONENTE MODAL  */}
       {modal &&
         <Modal 
           setModal = {setModal}
